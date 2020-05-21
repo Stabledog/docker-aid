@@ -18,5 +18,7 @@ if [[ -z $sourceMe ]]; then
     cp $Docker_aid/bashrc-common ./bin || errExit 101
     cp $Docker_aid/inputrc .inputrc || errExit 102
     cp $Docker_aid/bashrc .bashrc || errExit 103
+    cp $Docker_aid/bash_profile .bash_profile || errExit 104
+    ln -sf / projects
     touch docker-aid-initialized
 fi
