@@ -1,0 +1,14 @@
+# docker-aid/docker-compose.yml
+version: '3'
+services:
+    bash:
+        image: bash:4.4
+        volumes:
+            - "./container-init:/root"
+        entrypoint: bash
+        stdin_open: true
+        tty: true
+
+
+
+

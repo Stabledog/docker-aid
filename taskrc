@@ -1,0 +1,8 @@
+# taskrc for docker-aid/test1
+# vim: filetype=sh :
+
+function run_test {
+    #Help: run a test in docker
+    cd $taskrc_dir/test1
+    docker-compose run --rm bash
+}
