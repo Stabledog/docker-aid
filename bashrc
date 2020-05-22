@@ -14,7 +14,7 @@ while (( xloop++ <= 5 )); do
         break
     fi
     sleep 0.2
-    echo "Looping on projects link creation: $(( xloop ))"
+    #echo "Looping on projects link creation: $(( xloop ))"
 done
 export ProjectsHome=/root/projects
 
