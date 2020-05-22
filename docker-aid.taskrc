@@ -1,0 +1,3 @@
+# docker-aid.taskrc
+
+PATH=$(pathadd ~/bin/docker-aid)
