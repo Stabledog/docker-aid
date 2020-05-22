@@ -2,5 +2,12 @@
 # Created by docker-aid/make-docker-shell-initfiles.sh
 # vim: filetype=sh :
 
-export ProjectsHome=/
-source $HOME/bin/bashrc-common
+if [[ -z $SHELL ]]; then
+    export SHELL=/bin/bash
+fi
+orgDir=$PWD
+cd /root
+export ProjectsHome=/root/projects
+ln -sf /app ./projects
+source ./bin/bashrc-common
+cd $orgDir
