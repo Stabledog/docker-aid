@@ -4,6 +4,9 @@
 function run_test {
     #Help: run a test in docker
     cd $taskrc_dir/test1
+    if [[ -d container_init ]]; then
+        return $(errExit "./container_init already exists.  Replacing it may not be safe if container is running.")
+    fi
     rm -rf container-init
     ../make-docker-shell-initfiles.sh
     docker-compose run --rm bash
