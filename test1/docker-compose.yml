@@ -5,7 +5,7 @@ services:
         image: bash:4.4
         volumes:
             - "./container-init:/root"
-        entrypoint: bash
+            - "./:/app"
         stdin_open: true
         tty: true
 

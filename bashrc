@@ -2,12 +2,23 @@
 # Created by docker-aid/make-docker-shell-initfiles.sh
 # vim: filetype=sh :
 
-if [[ -z $SHELL ]]; then
-    export SHELL=/bin/bash
-fi
-orgDir=$PWD
-cd /root
+echo "Testing: $( test -e /root/projects; echo $?)"
+
+# Much testing and head-scratching has yielded this
+# inexplicable hack, which ensures that the projects
+# symlink gets created:
+xloop=0
+while (( xloop++ <= 5 )); do
+    ln -sf /app /root/projects &>/dev/null
+    if [[ -h /root/projects ]]; then
+        break
+    fi
+    sleep 0.2
+    echo "Looping on projects link creation: $(( xloop ))"
+done
 export ProjectsHome=/root/projects
-ln -sf /app ./projects
-source ./bin/bashrc-common
-cd $orgDir
+
+
+source /root/bin/bashrc-common
+
+
