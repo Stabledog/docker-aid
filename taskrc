@@ -10,7 +10,7 @@ function run_test {
     if [[ -d container-init ]]; then
         return $(errExit "./container_init already exists.  Replacing it may not be safe if container is running. Use --rm to force-delete")
     fi
-    ../make-docker-shell-initfiles.sh
+    ../make-docker-shell-initfiles.sh || return
     docker-compose run  bash
     docker-compose down -v
 }

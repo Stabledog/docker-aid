@@ -2,7 +2,7 @@
 # Created by docker-aid/make-docker-shell-initfiles.sh
 # vim: filetype=sh :
 
-echo "Testing: $( test -e /root/projects; echo $?)"
+#echo "Testing: $( test -e /root/projects; echo $?)"
 
 # Much testing and head-scratching has yielded this
 # inexplicable hack, which ensures that the projects
