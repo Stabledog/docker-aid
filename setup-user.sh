@@ -14,7 +14,7 @@ function errExit {
 
 if [[ -z $sourceMe ]]; then
     [[ -f ${Startdir}/setup-user.sh ]] || errExit 101
-    bakdir=my-home/backup/$RANDOM
+    bakdir=backup/$RANDOM
     mkdir -p $bakdir
     (
         echo "Backing up shell cfg to $bakdir:"
@@ -29,7 +29,8 @@ if [[ -z $sourceMe ]]; then
     for file in bashrc inputrc bash_profile vimrc; do
         ln -sf my-home/${file} .${file} && echo ".${file} installed in ${Startdir}" || echo "Error installing .${file}" >&2
     done
-    echo "Done, use 'exec bash' to restart the shell"
+    mkdir -p .vimtmp
+    echo "Done, use 'exec bash' to re-init the shell"
 fi
 
 
