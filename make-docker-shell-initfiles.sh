@@ -11,6 +11,21 @@ function errExit {
     exit 1
 }
 
+function setup_toxpy {
+    local toxpy_src="$1"
+    local roothome="$2"
+    [[ -d "$toxpy_src" ]] || return 1
+    [[ -d "$roothome" ]] || return 2
+    (
+        cd "$roothome" || errExit 101
+        rmdir -rf bin/tox-py &>/dev/null
+        mkdir -p bin/tox-py
+        cd bin/tox-py || errExit 102
+        git clone "$toxpy_src" . || errExit 103
+        rm -rf .git 
+    )
+}
+
 if [[ -z $sourceMe ]]; then
     [[ -f not_here ]] && errExit "Cant run here because ./not_here present"
     mkdir -p ./container-init/{bin,my-home/backup}
@@ -22,6 +37,7 @@ if [[ -z $sourceMe ]]; then
     cp $Docker_aid/setup-user.sh my-home/setup-user.sh || errExit 105
     chmod +x my-home/setup-user.sh
     cp $Docker_aid/basic-vimrc.vim my-home/vimrc || errExit 106
+    setup_toxpy $HOME/bin/tox-py $PWD
     touch docker-aid-initialized
 
     echo "Files in container-init created/updated.  Run ~/my-home/setup-user.sh within the container to install."
