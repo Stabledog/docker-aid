@@ -36,7 +36,7 @@ if [[ -z $sourceMe ]]; then
     cp $Docker_aid/bash_profile my-home/bash_profile || errExit 104
     cp $Docker_aid/setup-user.sh my-home/setup-user.sh || errExit 105
     chmod +x my-home/setup-user.sh
-    cp $Docker_aid/basic-vimrc.vim my-home/vimrc || errExit 106
+    cp $HOME/.vim/basic-vimrc.vim my-home/vimrc || errExit 106
     setup_toxpy $HOME/bin/tox-py $PWD
     touch docker-aid-initialized
 
