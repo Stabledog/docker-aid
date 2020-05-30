@@ -21,4 +21,9 @@ export ProjectsHome=/root/projects
 
 source /root/bin/bashrc-common
 
+if [[ $PATH != /root/bin* ]]; then
+    # We want first crack at the PATH
+    PATH=/root/bin:$PATH
+fi
+
 
