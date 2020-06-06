@@ -30,6 +30,10 @@ if [[ -z $sourceMe ]]; then
         ln -sf my-home/${file} .${file} && echo ".${file} installed in ${Startdir}" || echo "Error installing .${file}" >&2
     done
     mkdir -p .vimtmp
+    cat > .gitignore <<EOF
+.vimtmp
+.bash_history
+EOF
     echo "Done, use 'exec bash' to re-init the shell"
 fi
 
