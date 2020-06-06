@@ -17,7 +17,7 @@ while (( xloop++ <= 5 )); do
     #echo "Looping on projects link creation: $(( xloop ))"
 done
 
-export USER=/root
+export USER=root
 export ProjectsHome=/root/projects
 
 
